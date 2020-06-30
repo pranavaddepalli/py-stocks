@@ -1,49 +1,11 @@
 import stockquotes as sq
 import yfinance as yf
-import requests
-from bs4 import BeautifulSoup
-
-def scrape_news_text(news_url):
-    print('scraping news text')
-    news_html = requests.get(news_url).content
- 
-    '''convert html to BeautifulSoup object'''
-    news_soup = BeautifulSoup(news_html , 'lxml')
- 
-    paragraphs = [par.text for par in news_soup.find_all('p')]
-    news_text = '\n'.join(paragraphs)
- 
-    return news_text
-
-def get_news_urls(links_site):
-    print('getting news urls')
-    '''scrape the html of the site'''
-    resp = requests.get(links_site)
-    print('got response')
-    if not resp.ok:
-        return None
- 
-    html = resp.content
- 
-    '''convert html to BeautifulSoup object'''
-    soup = BeautifulSoup(html , 'lxml')
- 
-    '''get list of all links on webpage'''
-    print('getting all links with a')
-    links = soup.find_all('a')
-    print(links)
-    urls = [link.get('href') for link in links]
-    urls = [url for url in urls if url is not None]
- 
-    '''Filter the list of urls to just the news articles'''
-    news_urls = [url for url in urls if '/article/' in url]
- 
-    return news_urls
+from NewsScraper import NewsScraper
 
 class Stock:
     def __init__(self, symbol):
         self.ticker = symbol.upper()
-        
+        self.newsScraper = NewsScraper()
         self.sqobj = sq.Stock(self.ticker)
         self.yfobj = yf.Ticker(self.ticker)
         self.info = self.yfobj.get_info()
@@ -51,25 +13,8 @@ class Stock:
     def get_ticker(self):
         return self.ticker
 
-    def get_news(self, upper_page_limit = 1):
-        print('getting news')
-        landing_site = 'https://www.nasdaq.com/market-activity/stocks/' + self.ticker.lower() + '/news-headlines'
-        print('landing site: ', landing_site)
-        all_news_urls = get_news_urls(landing_site)
-        print('got all urls')
-        current_urls_list = all_news_urls.copy()
-        index = 2
-        print(index)
-        while (current_urls_list is not None) and (current_urls_list != []) and (index <= upper_page_limit):
-            current_site = landing_site + '?page=' + str(index)
-            current_urls_list = get_news_urls(current_site)
-            all_news_urls = all_news_urls + current_urls_list
-            print(index)
-            index = index + 1
-            
-        all_news_urls = list(set(all_news_urls))
-        all_articles = [scrape_news_text(news_url) for news_url in all_news_urls]
-        return all_articles
+    def get_news(self):
+        return self.newsScraper.get_articles(self.ticker)
 
     def get_last_month_data(self):
         return self.sqobj.historical
