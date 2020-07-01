@@ -1,7 +1,6 @@
 import stockquotes as sq
 import yfinance as yf
 import pandas as pd
-import numpy as np
 from NewsScraper import NewsScraper
 import datetime
 
