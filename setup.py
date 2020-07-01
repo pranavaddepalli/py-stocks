@@ -1,14 +1,14 @@
 from distutils.core import setup
 setup(
-    name='PyStocks',
-    packages=['PyStocks'],
+    name='py-stocks',
+    packages=['py-stocks'],
     version='0.1',
     license='MIT',
-    description='PyStocks is a package for retrieving real-time stock data, historical stock data, and stock technical indicators.',
+    description='py-stocks is a package for retrieving real-time stock data, historical stock data, and stock technical indicators.',
     author='Pranav Addepalli', 
     author_email='pranav.addepalli@gmail.com',
     url='https://github.com/pranavaddepalli/PyStocks',
-    download_url='https://github.com/pranavaddepalli/PyStocks/archive/v_0.1.tar.gz',
+    download_url='https://github.com/pranavaddepalli/PyStocks/archive/0.2.tar.gz',
     keywords=['Finance', 'Stocks', 'Python', 'Scraper'],
     install_requires=[
         'stockquotes',
