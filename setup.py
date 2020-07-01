@@ -4,7 +4,7 @@ setup(
     packages=['py-stocks'],
     version='0.1',
     license='MIT',
-    description='py-stocks is a package for retrieving real-time stock data, historical stock data, and stock technical indicators.',
+    description="py-stocks is a package for retrieving real-time stock data, historical stock data, and stock technical indicators.",
     author='Pranav Addepalli', 
     author_email='pranav.addepalli@gmail.com',
     url='https://github.com/pranavaddepalli/PyStocks',
