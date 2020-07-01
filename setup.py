@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name='py-stocks',
     packages=['py-stocks'],
-    version='0.1',
+    version='0.3',
     license='MIT',
     description="py-stocks is a package for retrieving real-time stock data, historical stock data, and stock technical indicators.",
     author='Pranav Addepalli', 
