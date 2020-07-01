@@ -1,6 +1,9 @@
 import stockquotes as sq
 import yfinance as yf
+import pandas as pd
+import numpy as np
 from NewsScraper import NewsScraper
+import datetime
 
 class Stock:
     def __init__(self, symbol):
@@ -14,25 +17,39 @@ class Stock:
         return self.ticker
 
     def get_news(self):
-        return self.newsScraper.get_articles(self.ticker)
+        news = pd.DataFrame(self.newsScraper.get_articles(self.ticker))
+        news.columns=['title', 'date', 'URL']
+        return news
 
     def get_last_month_data(self):
-        return self.sqobj.historical
+        df = pd.DataFrame(self.sqobj.historical)
+        df.set_index('date', inplace=True)
+        return df
     
     def get_last_month_open(self):
-        return [ (x['date'], x['open']) for x in self.get_last_month_data()]
+        df = self.get_last_month_data()['open'].to_frame()
+        df.columns=['open']
+        return df        
 
     def get_last_month_close(self):
-        return [ (x['date'], x['close']) for x in self.get_last_month_data()]
+        df = self.get_last_month_data()['close'].to_frame()
+        df.columns=['close']
+        return df  
     
     def get_last_month_high(self):
-        return [ (x['date'], x['high']) for x in self.get_last_month_data()]
+        df = self.get_last_month_data()['high'].to_frame()
+        df.columns=['high']
+        return df  
 
     def get_last_month_low(self):
-        return [ (x['date'], x['low']) for x in self.get_last_month_data()]
+        df = self.get_last_month_data()['high'].to_frame()
+        df.columns=['high']
+        return df  
     
     def get_last_month_volume(self):
-        return [ (x['date'], x['volume']) for x in self.get_last_month_data()]
+        df = self.get_last_month_data()['volume'].to_frame()
+        df.columns=['volume']
+        return df  
 
     def get_current_price(self):
         return self.sqobj.current_price

@@ -1,7 +1,7 @@
 from Stock import Stock
 
-m = Stock('GOOGL')
-
+m = Stock('MSFT')
+print()
 print('name', m.get_name())
 print('current price', m.get_current_price())
 print('52 week high', m.get_52week_high())
@@ -21,5 +21,7 @@ print('sustainability info', m.get_sustainability_info())
 print('volume', m.get_volume())
 print('website', m.get_website())
 print('summary', m.get_summary()) 
-print('last month data', m.get_last_month_data())
+print(m.get_last_month_data())
+print(m.get_last_month_open())
 print(m.get_news())
+print()

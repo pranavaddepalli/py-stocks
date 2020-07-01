@@ -18,7 +18,7 @@ class NewsScraper():
             title = article.find('p', class_='quote-news-headlines__item-title')
             date = article.find('span', class_='quote-news-headlines__date')
             link = article.find('a', class_='quote-news-headlines__link')
-            article_data = (title.text, date.text, link['href'])
+            article_data = (title.text, date.text, 'https://www.nasdaq.com' + link['href'])
             articles.append(article_data)
         
         return articles
