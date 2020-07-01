@@ -21,6 +21,14 @@ class Stock:
         news.columns=['title', 'date', 'URL']
         return news
 
+    def get_month_ema(self):
+        df = self.get_last_month_close()
+        alpha_val = 2 / (len(df) + 1)
+        df = df.iloc[::-1]
+        EMA = df.ewm(alpha=alpha_val).mean()
+        EMA.columns = ['EMA']
+        return EMA
+
     def get_last_month_data(self):
         df = pd.DataFrame(self.sqobj.historical)
         df.set_index('date', inplace=True)
