@@ -1,7 +1,7 @@
 # PyStocks
 PyStocks is a module for retrieving real-time stock data, historical stock data, and stock technical indicators.
 
-PyStocks is a wrapper package aimed towards developers looking for a single package for collecting and using both historical and real-time data. PyStocks integrates the yfinance [(The Yahoo! Finance Market Data Downloader)](https://github.com/ranaroussi/yfinance) and [stockqoutes](https://github.com/scoopgracie/stockquotes) modules as well as the capability to collect news articles directly from NASDAQ.
+PyStocks is a wrapper package aimed towards developers looking for a single package for collecting and using both historical and real-time data. PyStocks integrates the [yfinance](https://github.com/ranaroussi/yfinance) and [stockqoutes](https://github.com/scoopgracie/stockquotes) modules as well as the capability to collect news articles directly from [NASDAQ](https://www.nasdaq.com/).
 
 # Usage
 Create a new `Stock` object with the ticker symbol:
