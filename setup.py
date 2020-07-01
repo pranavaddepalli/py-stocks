@@ -1,11 +1,10 @@
 from distutils.core import setup
-with open("README.md", "r") as fh:
-    long_description = fh.read()
 
+long_description ="https://github.com/pranavaddepalli/py-stocks"
 setup(
     name='py-stocks',
     packages=['py-stocks'],
-    version='0.3',
+    version='1.6.5',
     license='MIT',
     description="py-stocks is a package for retrieving real-time stock data, historical stock data, and stock technical indicators.",
     long_description=long_description,
