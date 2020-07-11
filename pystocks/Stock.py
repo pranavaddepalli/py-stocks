@@ -1,7 +1,7 @@
 import stockquotes as sq
 import yfinance as yf
 import pandas as pd
-from NewsScraper import NewsScraper
+from .NewsScraper import NewsScraper
 import datetime
 
 class Stock:

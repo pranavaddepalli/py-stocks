@@ -1,2 +1,2 @@
-from Stock import Stock
-from NewsScraper import NewsScraper
+from .Stock import Stock
+from .NewsScraper import NewsScraper
